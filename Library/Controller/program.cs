@@ -13,7 +13,7 @@ namespace Library
     {
         static void Main(string[] args)
         {
-            new Controller();
+            new Main();
         }
     }
 }

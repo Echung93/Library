@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Library
-{    
-    public class Main
+public class Main
+{
+    ui ui = new ui();
+    public Main()
     {
+        ui.mainMenu();
     }
+
 }
