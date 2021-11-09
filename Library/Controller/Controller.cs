@@ -14,7 +14,7 @@ public class Controller
         Stream ws;
         FileInfo fileBookInfo = new FileInfo("bookInfomation.dat");
 
-        //책만들기
+        ////책만들기
         //ws = new FileStream("bookInfomation.dat", FileMode.Create);
         //BinaryFormatter serializer = new BinaryFormatter();
         //bookList.Add(new BookVO("ID001", "메타버스", "더큰내일센터", "김종현", "8000", 10));
