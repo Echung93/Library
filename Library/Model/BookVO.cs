@@ -8,10 +8,10 @@ public class BookVO
     private string bookAuthor;
     private string bookPrice;
     private int bookQuantity;
-    public BookVO()
-    {
+    //public BookVO()
+    //{
 
-    }
+    //}
 
     public BookVO(string bookIDNumber, string bookName, string bookPublisher, string bookAuthor, string bookPrice, int bookQuantity)
     {
@@ -59,4 +59,5 @@ public class BookVO
         get { return bookQuantity; }
         set { bookQuantity = value; }
     }
+
 }

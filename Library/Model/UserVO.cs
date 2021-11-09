@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 [Serializable]
-class UserVO
+public class UserVO
 {
     private string userId;
     private string userPassword;
@@ -14,8 +14,22 @@ class UserVO
     private string userPhoneNumber;
     private string userAddress;
     private string borrowedBookList;
-    private string borrowedBookCount;
+    private int borrowedBookCount;
 
+    public UserVO()
+    {
+
+    }
+    public UserVO(string userId, string userPassword, string userName, string userAge, string userPhoneNumber, string userAddress)
+    {
+        this.userId = userId;
+        this.userPassword = userPassword;
+        this.userName = userName;
+        this.userAge = userAge;
+        this.userPhoneNumber = userPhoneNumber;
+        this.userAddress = userAddress;
+
+    }
     public string UserId
     {
         get { return userId; }
@@ -58,7 +72,7 @@ class UserVO
         set { borrowedBookList = value; }
     }
 
-    public string BorrowedBookCount
+    public int BorrowedBookCount
     {
         get { return borrowedBookCount; }
         set { borrowedBookCount = value; }

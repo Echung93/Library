@@ -36,8 +36,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\books.cs" />
     <Compile Include="Controller\Controller.cs" />
+    <Compile Include="Controller\Login.cs" />
     <Compile Include="Controller\Main.cs" />
+    <Compile Include="Controller\MenuControl.cs" />
+    <Compile Include="Controller\UserRegister.cs" />
     <Compile Include="inputKey.cs" />
     <Compile Include="Model\UserVO.cs" />
     <Compile Include="Model\BookVO.cs" />

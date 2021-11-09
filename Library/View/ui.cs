@@ -26,6 +26,40 @@ public class ui
         Console.WriteLine("                             ▶    관리자  모드   ◀                         ");
         Console.WriteLine("\r\n");
         Console.WriteLine("                             ▶       종  료      ◀                         ");
+        Console.WriteLine("\r\n");
+        Console.WriteLine("\r\n");
+        Console.Write ("                  원하시는 메뉴의 숫자(1~4)를 입력해주세요. : ");
+        string input = Console.ReadLine();
+        switch(input)
+        {
+            case "1" :
+                {
+                    new Controller();
+                    break;
+                }
+
+            case "2":
+                {
+                    new Main();
+                    break;
+                }
+
+            case "3":
+                {
+                    break;
+                }
+
+            case "4":
+                {
+                    break;
+                }
+
+            default:
+                {
+                    Console.WriteLine("1~4번의 숫자를 입력해주세요.");
+                    break;
+                }
+        }
 
     }
 
@@ -55,6 +89,9 @@ public class ui
         Console.WriteLine("                             ▶ 처음 메뉴로  가기 ◀                         ");
         Console.WriteLine("\r\n");
         Console.WriteLine("                             ▶       종  료      ◀                         ");
+        Console.WriteLine("\r\n");
+        Console.WriteLine("\r\n");
+        Console.Write("                  원하시는 메뉴의 숫자(1~7)를 입력해주세요. : ");
     }
 
     public void printScreen1_1()
@@ -78,6 +115,9 @@ public class ui
         Console.WriteLine("                             ▶ 책  출판사로 검색 ◀                         ");
         Console.WriteLine("\r\n");
         Console.WriteLine("                             ▶ 메뉴로  돌아 가기 ◀                         ");
+        Console.WriteLine("\r\n");
+        Console.WriteLine("\r\n");
+        Console.Write("                  원하시는 메뉴의 숫자(1~4)를 입력해주세요. : ");
 
     }
 
@@ -94,7 +134,7 @@ public class ui
         Console.WriteLine("       ---------------------------------------------- 뒤로가기 : ESC ----    ");
         Console.WriteLine("\r\n");
         Console.WriteLine("\r\n");
-        Console.Write("        검색하실/대여하실 책의 이름 정보 검색 :                         ");
+        Console.Write("        검색하실/대여하실 책의 이름 정보 검색 : ");
     }
 
     public void printScreen1_1_2()
@@ -110,7 +150,7 @@ public class ui
         Console.WriteLine("       ---------------------------------------------- 뒤로가기 : ESC ----    ");
         Console.WriteLine("\r\n");
         Console.WriteLine("\r\n");
-        Console.Write("        검색하실 책의 저자 이름 정보 검색 :                        ");
+        Console.Write("        검색하실 책의 저자 이름 정보 검색 : ");
     }
 
     public void printScreen1_1_3()
@@ -126,7 +166,7 @@ public class ui
         Console.WriteLine("       ---------------------------------------------- 뒤로가기 : ESC ----    ");
         Console.WriteLine("\r\n");
         Console.WriteLine("\r\n");
-        Console.Write("        검색하실 책의 출판사 이름 정보 검색 :                        ");
+        Console.Write("        검색하실 책의 출판사 이름 정보 검색 : ");
     }
 
     public void printScreen1_2()
@@ -202,5 +242,20 @@ public class ui
 
 
 
+    }
+
+    public void printScreenEtc()
+    {
+        Console.WriteLine("       ------------------------------------------------------------------    ");
+        Console.WriteLine("\r\n");
+        Console.WriteLine("          ■        ■   ■■■     ■■■     ■■   ■■■   ■    ■      ");
+        Console.WriteLine("          ■        ■   ■   ■    ■   ■   ■  ■  ■   ■   ■  ■       ");
+        Console.WriteLine("          ■        ■   ■■■■   ■■■    ■■■  ■■■      ■         ");
+        Console.WriteLine("          ■        ■   ■    ■   ■   ■   ■  ■  ■   ■     ■         ");
+        Console.WriteLine("          ■■■■  ■   ■■■■   ■    ■  ■  ■  ■    ■    ■         ");
+        Console.WriteLine("\r\n");
+        Console.WriteLine("       ---------------------------------------------- 뒤로가기 : ESC ----    ");
+        Console.WriteLine("\r\n");
+        Console.WriteLine("\r\n");
     }
 }
