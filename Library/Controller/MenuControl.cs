@@ -2,6 +2,15 @@
 
 public class MenuControl
 {
+    private static MenuControl instance = null;
+
+    public static MenuControl Get()
+    {
+        if (instance == null)
+            instance = new MenuControl();
+
+        return instance;
+    }
     public string ReadString()    //string 입력하는 메소드, 뒤로가기때문에
     {
         string readString = "";

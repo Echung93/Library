@@ -10,11 +10,11 @@ public class Main
         List<UserVO> userList = new List<UserVO>();
         Stream ws;
         FileInfo fileUserInfo = new FileInfo("userInfomation.dat");
-        ws = new FileStream("userInfomation.dat", FileMode.Create);
-        BinaryFormatter serializer = new BinaryFormatter();
-        userList.Add(new UserVO("kty309", "kty309", "이충훈", "24", "01044442222", "구좌"));
-        serializer.Serialize(ws, userList);     //직렬화(저장)
-        ws.Close();
+        //ws = new FileStream("userInfomation.dat", FileMode.Create);
+        //BinaryFormatter serializer = new BinaryFormatter();
+        //userList.Add(new UserVO("kty309", "kty309", "이충훈", "24", "01044442222", "구좌"));
+        //serializer.Serialize(ws, userList);     //직렬화(저장)
+        //ws.Close();
 
         if (!fileUserInfo.Exists)       //파일이 없을경우
         {
@@ -34,7 +34,7 @@ public class Main
                 userList = (List<UserVO>)deserializer.Deserialize(rs);       //역직렬화,리스트에 저장함.
                 rs.Close();
                 ws = new FileStream("userInfomation.dat", FileMode.Open);
-                //BinaryFormatter serializer = new BinaryFormatter();
+                BinaryFormatter serializer = new BinaryFormatter();
                 Console.Clear();
                 Console.Write("        회원 ID를 입력하세요(English and Number) : ");
                 string UserId = Console.ReadLine();

@@ -5,9 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-class books
+public class Books
 {
     ui ui = new ui();
+    public Books()
+        {
+
+        }
     public void searchBook(List<BookVO> bookList)
     {
         bool check = true;
@@ -24,8 +28,13 @@ class books
             ui.printScreen1_1_1();
             while (check)
             {
-                string input = Console.ReadLine();
-                Console.WriteLine("        검색 목록");
+                string input = MenuControl.Get().ReadString();
+                if (input == "\0")
+                {
+                    break;
+                }
+                while (check)
+                    Console.WriteLine("        검색 목록");
                 for (int i = 0; i < bookList.Count; i++)
                 {
                     if (bookList[i].BookName.Contains(input))
@@ -60,7 +69,11 @@ class books
             ui.printScreen1_1_2();
             while (check)
             {
-                string input = Console.ReadLine();
+                string input = MenuControl.Get().ReadString();
+                if (input == "\0")
+                {
+                    break;
+                }
                 Console.WriteLine("        검색 목록");
                 for (int i = 0; i < bookList.Count; i++)
                 {
@@ -95,7 +108,11 @@ class books
             ui.printScreen1_1_3();
             while (check)
             {
-                string input = Console.ReadLine();
+                string input = MenuControl.Get().ReadString();
+                if (input == "\0")
+                {
+                    break;
+                }
                 Console.WriteLine("        검색 목록");
                 for (int i = 0; i < bookList.Count; i++)
                 {
@@ -134,12 +151,12 @@ class books
 
     }
 
-    public void borrowBooks(List<BookVO> bookList)
+    public List<BookVO> borrowBooks(List<BookVO> bookList) 
     {
         bool check = true;
         bool check1 = true;
         Console.Clear();
-        //Controller ct = new Controller();
+        Controller ct = new Controller();
         bookList = Controller.bookList(bookList);
         List<BookVO> searchList = new List<BookVO>();
         List<BookVO> borrowList = new List<BookVO>();
@@ -149,7 +166,11 @@ class books
         ui.printScreen1_1_1();
         while (check)
         {
-            string input = Console.ReadLine();
+            string input = MenuControl.Get().ReadString();
+            if (input == "\0")
+            {
+                break;
+            }
             Console.WriteLine("        검색 목록");
             for (int i = 0; i < bookList.Count; i++)
             {
@@ -182,7 +203,11 @@ class books
             Console.Write("        대출 하시려는 책의 ID넘버를 입력하세요(ex.ID1234) : ");
         while (check1)
         {
-            string bookname = Console.ReadLine();
+            string bookname = MenuControl.Get().ReadString();
+            if (bookname == "\0")
+            {
+                break;
+            }
             int count1 = 0;
             for (int j = 0; j < searchList.Count; j++)
             {
@@ -199,7 +224,8 @@ class books
                     //Console.WriteLine("\r\n");
                     borrowList.Add(searchList[j]);
                     Console.Write($"        책 '{searchList[j].BookName}' 대출 완료 ! ");
-                    count1++;
+                    searchList[j].BookQuantity--;
+                    count1++;                   
                 }
             }
 
@@ -213,6 +239,6 @@ class books
                 check1 = false;
             }
         }
-
+        return searchList;
     }
 }

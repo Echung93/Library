@@ -6,7 +6,7 @@ class inputKey
     {
         string password = "";
         ConsoleKeyInfo info = Console.ReadKey(true);
-        while (info.Key != ConsoleKey.Enter)
+       while (info.Key != ConsoleKey.Enter)
         {
             if (info.Key != ConsoleKey.Backspace)
             {

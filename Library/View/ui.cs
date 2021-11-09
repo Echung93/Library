@@ -6,8 +6,22 @@ using System.Threading.Tasks;
 
 public class ui
 {
-    public void mainMenu()
+    private static ui instance = null;
+
+    public static ui Get()
     {
+        if (instance == null)
+            instance = new ui();
+
+        return instance;
+    }
+
+    public void mainMenu(List<UserVO> userList)
+    {
+        Login lo = new Login(userList);
+        List<UserVO> loginUser = new List<UserVO>();
+        List<BookVO> bookList = new List<BookVO>();
+        List<BookVO> searchList = new List<BookVO>();
         Console.WriteLine("       ------------------------------------------------------------------    ");
         Console.WriteLine("\r\n");
         Console.WriteLine("          ■        ■   ■■■     ■■■     ■■   ■■■   ■    ■      ");
@@ -34,7 +48,23 @@ public class ui
         {
             case "1" :
                 {
-                    new Controller();
+                    lo.loginUser(userList);
+                    //printScreen1(bookList);
+                    //books borrowBooks = new books()
+                    loginUser = lo.loginUser(userList);
+                     foreach (UserVO uv in loginUser)
+                    {
+                        Console.WriteLine("       ------------------------------------------------------------------    ");
+                        Console.WriteLine("\r\n");
+                        Console.WriteLine("        회원 ID : " + uv.UserId);
+                        Console.WriteLine("        회원 비밀 번호 : " + uv.UserPassword);
+                        Console.WriteLine("        회원 이름 입력 : " + uv.UserName);
+                        Console.WriteLine($"        {uv.UserName} 나이 : " + uv.UserAge);
+                        Console.WriteLine($"        {uv.UserName} 핸드폰 번호 : " + uv.UserPhoneNumber);
+                        Console.WriteLine($"        {uv.UserName} 회원 주소 : " + uv.UserAddress);
+                        Console.WriteLine("\r\n");
+                    }
+
                     break;
                 }
 
@@ -63,7 +93,7 @@ public class ui
 
     }
 
-    public void printScreen1()
+    public void printScreen1(List<BookVO> bookList)
     {
         Console.WriteLine("       ------------------------------------------------------------------    ");
         Console.WriteLine("\r\n");
@@ -92,6 +122,53 @@ public class ui
         Console.WriteLine("\r\n");
         Console.WriteLine("\r\n");
         Console.Write("                  원하시는 메뉴의 숫자(1~7)를 입력해주세요. : ");
+        string input = Console.ReadLine();
+        switch (input)
+        {
+            case "1":
+                {
+                    //books bs = new books();
+                    //bs.searchBook(bookList);
+                    break;
+                }
+
+            case "2":
+                {
+                    //books bs = new books();
+                    //bs.borrowBooks(bookList);
+                    break;
+                }
+
+            case "3":
+                {
+                    break;
+                }
+
+            case "4":
+                {
+                    break;
+                }
+
+            case "5":
+                {
+                    break;
+                }
+            
+            case "6":
+                {
+                    break;
+                }
+            
+            case "7":
+                {
+                    break;
+                }
+            default:
+                {
+                    Console.WriteLine("1~4번의 숫자를 입력해주세요.");
+                    break;
+                }
+        }
     }
 
     public void printScreen1_1()
