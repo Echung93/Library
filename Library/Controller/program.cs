@@ -37,22 +37,22 @@ class program
         //new ui().mainMenu();
 
         //userList = ur.userList(userList);
-        foreach (UserVO uv in userList)
-        {
-            Console.WriteLine("       ------------------------------------------------------------------    ");
-            Console.WriteLine("\r\n");
-            Console.WriteLine("        회원 ID : " + uv.UserId);
-            Console.WriteLine("        회원 비밀 번호 : " + uv.UserPassword);
-            Console.WriteLine("        회원 이름 입력 : " + uv.UserName);
-            Console.WriteLine($"        {uv.UserName} 나이 : " + uv.UserAge);
-            Console.WriteLine($"        {uv.UserName} 핸드폰 번호 : " + uv.UserPhoneNumber);
-            Console.WriteLine($"        {uv.UserName} 회원 주소 : " + uv.UserAddress);
-            Console.WriteLine("\r\n");
-        }
+        //foreach (UserVO uv in userList)
+        //{
+        //    Console.WriteLine("       ------------------------------------------------------------------    ");
+        //    Console.WriteLine("\r\n");
+        //    Console.WriteLine("        회원 ID : " + uv.UserId);
+        //    Console.WriteLine("        회원 비밀 번호 : " + uv.UserPassword);
+        //    Console.WriteLine("        회원 이름 입력 : " + uv.UserName);
+        //    Console.WriteLine($"        {uv.UserName} 나이 : " + uv.UserAge);
+        //    Console.WriteLine($"        {uv.UserName} 핸드폰 번호 : " + uv.UserPhoneNumber);
+        //    Console.WriteLine($"        {uv.UserName} 회원 주소 : " + uv.UserAddress);
+        //    Console.WriteLine("\r\n");
+        //}
 
         //books bs = new books();
         //bs.borrowBooks(bookList);
-
-        Login lo = new Login(userList);
+        //Login lo = new Login(userList);
+        new Main();
     }
 }
