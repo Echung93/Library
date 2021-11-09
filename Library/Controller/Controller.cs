@@ -14,7 +14,7 @@ public class Controller
         Stream ws;
         FileInfo fileBookInfo = new FileInfo("bookInfomation.dat");
 
-        //책만들기
+        ////책만들기
         //ws = new FileStream("bookInfomation.dat", FileMode.Create);
         //BinaryFormatter serializer = new BinaryFormatter();
         //bookList.Add(new BookVO("ID001", "메타버스", "더큰내일센터", "김종현", "8000", 10));
@@ -46,8 +46,6 @@ public class Controller
                 //bookList.Add(new BookVO("ID008", "벤쳐마루탈출기", "린랩", "김진양", "15000", 10));
                 //serializer.Serialize(ws, bookList);     //직렬화(저장)
                 //ws.Close();
-
-
             }
         }
 
@@ -65,25 +63,22 @@ public class Controller
         //}
 
         //책리스트 불러오기(dat안에 있는 이름이랑 통일되어야함)
-        //foreach (BookVO bi in bookList)
-        //{
-        //    Console.WriteLine("       ------------------------------------------------------------------    ");
-        //    Console.WriteLine("\r\n");
-        //    Console.WriteLine("        책  ID 넘버 : " + bi.BookIDNumber);
-        //    Console.WriteLine("        책  이름 : " + bi.BookName);
-        //    Console.WriteLine("        책  저자 : " + bi.BookAuthor);
-        //    Console.WriteLine("        책  출판사 : " + bi.BookPublisher);
-        //    Console.WriteLine("        책  가격 : " + bi.BookPrice);
-        //    Console.WriteLine("        책  수량 : " + bi.BookQuantity);
-        //    Console.WriteLine("\r\n");
-        //}
+        foreach (BookVO bi in bookList)
+        {
+            Console.WriteLine("       ------------------------------------------------------------------    ");
+            Console.WriteLine("\r\n");
+            Console.WriteLine("        책  ID 넘버 : " + bi.BookIDNumber);
+            Console.WriteLine("        책  이름 : " + bi.BookName);
+            Console.WriteLine("        책  저자 : " + bi.BookAuthor);
+            Console.WriteLine("        책  출판사 : " + bi.BookPublisher);
+            Console.WriteLine("        책  가격 : " + bi.BookPrice);
+            Console.WriteLine("        책  수량 : " + bi.BookQuantity);
+            Console.WriteLine("\r\n");
+        }
         Console.WriteLine("       ------------------------------------------------------------------    ");
         Console.WriteLine("\r\n");
         Console.WriteLine($"                등록된 총 책의 권 수는: {bookList.Count} 권 입니다");
-        Console.WriteLine("Pls key in your Login ID");
-        var loginid = Console.ReadLine();
-        Console.WriteLine("Pls key in your Password");
-        var password = inputKey.ReadPassword();
+
 
     }
 

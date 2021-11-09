@@ -7,13 +7,10 @@ using System.IO;
 using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Library
+class program
 {
-    class program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            new Main();
-        }
+        new ui().mainMenu();
     }
 }

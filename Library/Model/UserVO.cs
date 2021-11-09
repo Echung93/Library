@@ -16,6 +16,16 @@ class UserVO
     private string borrowedBookList;
     private string borrowedBookCount;
 
+    public UserVO(string userId, string userPassword, string userName, string userAge, string userPhoneNumber, string userAddress)
+    {
+        this.userId = userId;
+        this.userPassword = userPassword;
+        this.userName = userName;
+        this.userAge = userAge;
+        this.userPhoneNumber = userPhoneNumber;
+        this.userAddress = userAddress;
+
+    }
     public string UserId
     {
         get { return userId; }

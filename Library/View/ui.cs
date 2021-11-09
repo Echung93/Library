@@ -26,6 +26,40 @@ public class ui
         Console.WriteLine("                             ▶    관리자  모드   ◀                         ");
         Console.WriteLine("\r\n");
         Console.WriteLine("                             ▶       종  료      ◀                         ");
+        Console.WriteLine("\r\n");
+        Console.WriteLine("\r\n");
+        Console.Write ("                  원하시는 메뉴의 숫자(1~4)를 입력해주세요. : ");
+        string input = Console.ReadLine();
+        switch(input)
+        {
+            case "1" :
+                {
+                    new Controller();
+                    break;
+                }
+
+            case "2":
+                {
+                    new Main();
+                    break;
+                }
+
+            case "3":
+                {
+                    break;
+                }
+
+            case "4":
+                {
+                    break;
+                }
+
+            default:
+                {
+                    Console.WriteLine("1~4번의 숫자를 입력해주세요.");
+                    break;
+                }
+        }
 
     }
 
