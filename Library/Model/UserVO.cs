@@ -30,6 +30,18 @@ public class UserVO
         this.userAddress = userAddress;
 
     }
+    public UserVO(string userId, string userPassword, string userName, string userAge, string userPhoneNumber, string userAddress, string borrowedBookList, int borrowedBookCount)
+    {
+        this.userId = userId;
+        this.userPassword = userPassword;
+        this.userName = userName;
+        this.userAge = userAge;
+        this.userPhoneNumber = userPhoneNumber;
+        this.userAddress = userAddress;
+        this.borrowedBookList = borrowedBookList;
+        this.borrowedBookCount = borrowedBookCount;
+
+    }
     public string UserId
     {
         get { return userId; }

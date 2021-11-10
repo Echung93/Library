@@ -66,7 +66,8 @@ class UserRegister
         //userList.Add(new UserVO(UserId, UserPassword, UserName, UserAge, UserPhoneNumber, UserAddress));
         //serializer.Serialize(ws, userList);     //직렬화(저장)
         //ws.Close();
-        
+
         return userList;
     }
+
 }
