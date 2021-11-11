@@ -116,4 +116,46 @@ public class MenuControl
             return true;
         return false;
     }
+
+    public string ReadPassword()
+    {
+        string password = "";
+        ConsoleKeyInfo key;
+        while (true)
+        {
+            key = Console.ReadKey(true);
+
+            if (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Escape
+                && IsKoreanString(key))
+            {
+                password += key.KeyChar;
+                Console.Write("*");
+            }
+            else if (key.Key == ConsoleKey.Backspace && password.Length > 0)
+            {
+                int lastIndex = password.Length - 1;
+                if (password[lastIndex] >= '가' && password[lastIndex] <= '힣')       //한글일경우
+                {
+                    password = password.Substring(0, (password.Length - 1));
+                    Console.Write("\b\b  \b\b");
+                }
+                else
+                {
+                    password = password.Substring(0, (password.Length - 1));  //한글 이외의 문자.
+                    Console.Write("\b \b");
+                }
+            }
+            else if (key.Key == ConsoleKey.Escape)      //esc 누를 경우 null 반환
+            {
+                return "\0";
+            }
+            else if (key.Key == ConsoleKey.Enter)       //엔터를 누를경우 저장된 스트링 반환
+            {
+                if (password == "")
+                    continue;
+                return password;
+            }
+        }
+    }
 }
+        

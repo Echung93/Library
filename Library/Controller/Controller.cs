@@ -130,4 +130,11 @@ public class Controller
         serializer.Serialize(ws, bookList);     //직렬화(저장)
         ws.Close();
     }
+    public void UpdataUserData(List<UserVO> userList)
+    {
+        Stream ws = new FileStream("userInfomation.dat", FileMode.Create);
+        BinaryFormatter serializer = new BinaryFormatter();
+        serializer.Serialize(ws, userList);     //직렬화(저장)
+        ws.Close();
+    }
 }

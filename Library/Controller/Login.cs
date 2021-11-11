@@ -77,7 +77,7 @@ public class Login
                     Console.Write("        회원 비밀 번호를 입력하세요(English and Number) : ");
                     while (check1)
                     {
-                        string pw = inputKey.ReadPassword();
+                        string pw = MenuControl.Get().ReadPassword();
                         if (userList[i].UserPassword == (pw))
                         {
                             Console.Write("        로그인 성공");
@@ -110,6 +110,8 @@ public class Login
         }
         return loginUser;
     }
+
+
 }
 
 

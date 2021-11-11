@@ -175,47 +175,118 @@ public class ui
 
                     case "2":
                         {
-                            borrowList = books.borrowBooks(bookList, loginUser);
-                            foreach (UserVO uv in loginUser)
+                            check1 = false;
+                            borrowList = books.borrowBooks(bookList, loginUser, userList);
+                            for (int i = 0; i < loginUser.Count; i++)
                             {
-                                Console.WriteLine("       ------------------------------------------------------------------    ");
-                                Console.WriteLine("\r\n");
-                                Console.WriteLine("        회원 ID : " + uv.UserId);
-                                Console.WriteLine("        회원 비밀 번호 : " + uv.UserPassword);
-                                Console.WriteLine("        회원 이름 입력 : " + uv.UserName);
-                                Console.WriteLine($"        {uv.UserName} 나이 : " + uv.UserAge);
-                                Console.WriteLine($"        {uv.UserName} 핸드폰 번호 : " + uv.UserPhoneNumber);
-                                Console.WriteLine($"        {uv.UserName} 회원 주소 : " + uv.UserAddress);
-                                Console.WriteLine($"        {uv.UserName} 빌린 책 이름 : " + uv.BorrowedBookList);
-                                Console.WriteLine($"        {uv.UserName} 빌린 책 갯수 : " + uv.BorrowedBookCount);
-                                Console.WriteLine("\r\n");
-                            }
+                                for (int j =0; j < userList.Count; j++)
+                                {
+                                    if (loginUser[i].UserId == userList[j].UserId)
+                                    {
+                                            Console.WriteLine("       ------------------------------------------------------------------    ");
+                                            Console.WriteLine("\r\n");
+                                            Console.WriteLine("        회원 ID : " + userList[j].UserId);
+                                            Console.WriteLine("        회원 비밀 번호 : " + userList[j].UserPassword);
+                                            Console.WriteLine("        회원 이름 입력 : " + userList[j].UserName);
+                                            Console.WriteLine($"        {userList[j].UserName} 나이 : " + userList[j].UserAge);
+                                            Console.WriteLine($"        {userList[j].UserName} 핸드폰 번호 : " + userList[j].UserPhoneNumber);
+                                            Console.WriteLine($"        {userList[j].UserName} 회원 주소 : " + userList[j].UserAddress);
+                                            Console.WriteLine($"        {userList[j].UserName} 빌린 책 이름 : " + userList[j].BorrowedBookList);
+                                            Console.WriteLine($"        {userList[j].UserName} 빌린 책 갯수 : " + userList[j].BorrowedBookCount);
+                                            Console.WriteLine("\r\n");
 
+                                    }
+                                }
+
+                            }
+                            
+                            if (input == "\0")
+                            {
+                                break;
+                            }
+                            MenuControl.Get().ReadESC();
+                            check = true;
+                            check1 = false;
                             break;
                         }
 
                     case "3":
                         {
+                            new Books().returnBook(bookList, loginUser, userList);
                             break;
                         }
 
                     case "4":
                         {
+                            Console.Clear();
+                            Controller.bookList(bookList);
+                            for (int i = 0; i < bookList.Count; i++)
+                            {
+                                Console.WriteLine("       ------------------------------------------------------------------    ");
+                                Console.WriteLine("\r\n");
+                                Console.WriteLine("        책  ID 넘버 : " + bookList[i].BookIDNumber);
+                                Console.WriteLine("        책  이름 : " + bookList[i].BookName);
+                                Console.WriteLine("        책  저자 : " + bookList[i].BookAuthor);
+                                Console.WriteLine("        책  출판사 : " + bookList[i].BookPublisher);
+                                Console.WriteLine("        책  가격 : " + bookList[i].BookPrice);
+                                Console.WriteLine("        책  수량 : " + bookList[i].BookQuantity);
+                            }
+
+                            Console.WriteLine("\r\n        뒤로가기를 원하시면 ESC를 눌러주세요." );
+                            MenuControl.Get().ReadESC();
+                            if (input == "\0")
+                            {
+                                break;
+                            }
+                            check = true;
+                            check1 = false;
                             break;
                         }
 
                     case "5":
                         {
+                            Console.Clear();
+                           for(int i = 0; i < loginUser.Count; i++)
+                            {
+                                for (int j = 0; j < userList.Count; j++)
+                                {
+                                    if (userList[j].UserId == loginUser[i].UserId)
+                                    {
+                                        Console.WriteLine("       ------------------------------------------------------------------    ");
+                                        Console.WriteLine("\r\n");
+                                        Console.WriteLine("        회원 ID : " + userList[j].UserId);
+                                        Console.WriteLine("        회원 이름 : " + userList[j].UserName);
+                                        Console.WriteLine("        회원 나이 : " + userList[j].UserAge);
+                                        Console.WriteLine("        회원 핸드폰 번호 : " + userList[j].UserPhoneNumber);
+                                        Console.WriteLine("        회원 주소 : " + userList[j].UserAddress);
+                                        Console.WriteLine("        빌린 책 갯수 : " + userList[j].BorrowedBookCount);
+                                        Console.WriteLine("        빌린 책 이름 : " + userList[j].BorrowedBookList);
+                                        Console.WriteLine("\r\n");
+                                    }
+                                    
+                                }
+                            }
+                            
+                            MenuControl.Get().ReadESC();
+                            if (input == "\0")
+                            {
+                                break;
+                            }
+                            check = true;
+                            check1 = false;
                             break;
                         }
 
                     case "6":
                         {
+                            check = false;
+                            check1 = false;
                             break;
                         }
 
                     case "7":
                         {
+                            Environment.Exit(7);
                             break;
                         }
 
@@ -225,7 +296,7 @@ public class ui
                         }
                     default:
                         {
-                            Console.WriteLine("1~7번의 숫자를 입력해주세요.");
+                            Console.WriteLine("\r\n                  1~7번의 숫자를 입력해주세요.");
                             break;
                         }
                 }
@@ -339,7 +410,7 @@ public class ui
         Console.WriteLine("\r\n");
         Console.WriteLine("        {0}님의 대출 책 목록                                                 ");
         Console.WriteLine("\r\n");
-        Console.WriteLine("                             ▶    회 원 가 입    ◀                         ");
+        Console.WriteLine("                                                      ");
         Console.WriteLine("\r\n");
         Console.Write("        반납할 책의 숫자를 입력해주세요 :                         ");
 
