@@ -69,12 +69,19 @@ public class Login
         while (check)
         {
             int count = 0;
-            id = Console.ReadLine();
+            id = MenuControl.Get().ReadString();
+            if (id == "\0")
+            {
+                check = false;
+                break;
+            }
             for (int i = 0; i < userList.Count; i++)
             {
+                //int index = userList[i].UserId.IndexOf(id);                
+
                 if (userList[i].UserId == (id))
                 {
-                    Console.Write("        회원 비밀 번호를 입력하세요(English and Number) : ");
+                    Console.Write("\r\n        회원 비밀 번호를 입력하세요(English and Number) : ");
                     while (check1)
                     {
                         string pw = MenuControl.Get().ReadPassword();
@@ -84,7 +91,7 @@ public class Login
                             loginUser.Add(userList[i]);
                             check = false;
                             check1 = false;
-                                                        
+
                         }
 
                         else
@@ -101,14 +108,31 @@ public class Login
                     count++;
                 }
             }
+
             if (count == userList.Count)
             {
                 Console.Clear();
                 ui.Get().printScreenEtc();
                 Console.Write("        존재하지 않는 ID입니다. 다시 입력하세요(English and Number) : ");
-            }            
+            }
         }
         return loginUser;
+    }
+
+    public bool loginManager(string input)
+    {
+        while (true)
+        {
+            if (input == "byuk")
+            {
+                return false;
+            }
+            else
+            {
+                Console.Write("\r\n         관리자 비밀 번호를 다시 입력 하시오 : ");
+                input = MenuControl.Get().ReadPassword();
+            }
+        }
     }
 
 

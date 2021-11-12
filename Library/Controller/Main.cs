@@ -30,10 +30,6 @@ public class Main
                 bool check = true;
                 bool check1 = true;
                                 
-                Stream rs = new FileStream("userInfomation.dat", FileMode.Open); //일단 불러온다.
-                BinaryFormatter deserializer = new BinaryFormatter();
-                userList = (List<UserVO>)deserializer.Deserialize(rs);       //역직렬화,리스트에 저장함.
-                rs.Close();
                 ws = new FileStream("userInfomation.dat", FileMode.Open);
                 BinaryFormatter serializer = new BinaryFormatter();
                 Console.Clear();
@@ -50,6 +46,7 @@ public class Main
                         if (userList[i].UserId == UserId)
                         {
                             Console.Write("\r\n        이미 존재하는 ID입니다. 회원 ID를 다시 입력하세요(English and Number) : ");
+                            UserId = MenuControl.Get().ReadString();
                             count++;
                             break;
                         }
@@ -118,18 +115,18 @@ public class Main
         //serializer.Serialize(ws, userList);     //직렬화(저장)
         //ws.Close();
 
-        foreach (UserVO ui in userList)
-        {
-            Console.WriteLine("       ------------------------------------------------------------------    ");
-            Console.WriteLine("\r\n");
-            Console.WriteLine("        회원 ID : " + ui.UserId);
-            Console.WriteLine("        회원 비밀 번호 : " + ui.UserPassword);
-            Console.WriteLine("        회원 이름 입력 : " + ui.UserName);
-            Console.WriteLine($"        {ui.UserName} 나이 : " + ui.UserAge);
-            Console.WriteLine($"        {ui.UserName} 핸드폰 번호 : " + ui.UserPhoneNumber);
-            Console.WriteLine($"        {ui.UserName} 회원 주소 : " + ui.UserAddress);
-            Console.WriteLine("\r\n");
-        }
+        //foreach (UserVO ui in userList)
+        //{
+        //    Console.WriteLine("       ------------------------------------------------------------------    ");
+        //    Console.WriteLine("\r\n");
+        //    Console.WriteLine("        회원 ID : " + ui.UserId);
+        //    Console.WriteLine("        회원 비밀 번호 : " + ui.UserPassword);
+        //    Console.WriteLine("        회원 이름 입력 : " + ui.UserName);
+        //    Console.WriteLine($"        {ui.UserName} 나이 : " + ui.UserAge);
+        //    Console.WriteLine($"        {ui.UserName} 핸드폰 번호 : " + ui.UserPhoneNumber);
+        //    Console.WriteLine($"        {ui.UserName} 회원 주소 : " + ui.UserAddress);
+        //    Console.WriteLine("\r\n");
+        //}
 
         Console.ReadLine();
     }
