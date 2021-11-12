@@ -70,15 +70,15 @@ public class Login
         {
             int count = 0;
             id = MenuControl.Get().ReadString();
+
             if (id == "\0")
             {
                 check = false;
                 break;
             }
+
             for (int i = 0; i < userList.Count; i++)
             {
-                //int index = userList[i].UserId.IndexOf(id);                
-
                 if (userList[i].UserId == (id))
                 {
                     Console.Write("\r\n        회원 비밀 번호를 입력하세요(English and Number) : ");
@@ -115,6 +115,7 @@ public class Login
                 ui.Get().printScreenEtc();
                 Console.Write("        존재하지 않는 ID입니다. 다시 입력하세요(English and Number) : ");
             }
+            
         }
         return loginUser;
     }

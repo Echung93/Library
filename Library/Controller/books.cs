@@ -253,7 +253,7 @@ public class Books
                                     //Console.WriteLine("        책  수량 : " + bookList[j].BookQuantity);
                                     Console.WriteLine("\r\n");
                                     Console.Write($"        책 '{searchList[j].BookName}' 대출 완료 ! ");
-                                    userList[l].BorrowedBookList +=searchList[j].BookName + " ";
+                                    userList[l].BorrowedBookList += searchList[j].BookName + " ";
                                     userList[l].BorrowedBookCount++;
                                     loginUser[0].BorrowedBookCount++;
                                     Controller controller = new Controller();
@@ -267,9 +267,12 @@ public class Books
                                 {
                                     Console.WriteLine("\r\n");
                                     Console.Write($"        책 '{searchList[j].BookName}' 대출 완료 ! ");
-                                    userList[l].BorrowedBookList +=searchList[j].BookName + " ";
+                                    userList[l].BorrowedBookList += searchList[j].BookName + " ";
                                     userList[l].BorrowedBookCount++;
-                                    loginUser[0].BorrowedBookCount++;            
+                                    loginUser[0].BorrowedBookCount++;
+                                    userList[l].BorrowedBookList += searchList[j].BookName + " ";
+                                    userList[l].BorrowedBookCount++;
+                                    loginUser[0].BorrowedBookCount++;
                                     Controller controller = new Controller();
                                     controller.UpdataUserData(userList);
                                     controller.HistoryOfBorrow(searchList[j].BookName, loginUser[0].UserName, bookHistoryList);
@@ -341,11 +344,10 @@ public class Books
         bookList = Controller.bookList(bookList);
         userList = Controller.userList(userList);
         bookHistoryList = Controller.bookHistoryList(bookHistoryList);
-        //List<BookHistoryVO> bookHistoryList;
+
         List<BookVO> searchList = new List<BookVO>();
         List<BookVO> borrowList = new List<BookVO>();
         List<UserVO> userBorrow = new List<UserVO>();
-
         int count = 0;
         ui.Get().printScreenEtc();
         while (check1)
@@ -401,7 +403,7 @@ public class Books
                         {
                             if (userList[j].UserId == loginUser[i].UserId)
                             {
-                                for (int k = 0; k < split.Length -1; k++)
+                                for (int k = 0; k < split.Length - 1; k++)
                                 {
                                     if (k != num)
                                     {
@@ -413,7 +415,8 @@ public class Books
                                 Controller controller = new Controller();
                                 controller.UpdataUserData(userList);
                                 //HistoryOfReturn(bookList, loginUser, bookHistory);
-                                Console.Write($"\r\n        {split[num]}책이 반납되었습니다. "); 
+
+                                Console.Write($"\r\n        {split[num]}책이 반납되었습니다. ");
                                 controller.HistoryOfReturn(split[num], loginUser[0].UserName, bookHistoryList);
                                 controller.UpdateBookHistoryList(bookHistoryList);
                                 string input1 = MenuControl.Get().ReadESC();
@@ -423,13 +426,16 @@ public class Books
                                     check1 = false;
                                     break;
                                 }
-                                
+
                             }
                         }
                     }
 
+
                 }
             }
     }
+
+
 
 }
