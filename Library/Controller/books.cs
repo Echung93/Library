@@ -180,8 +180,6 @@ public class Books
         bool check = true;
         bool check1 = true;
         Console.Clear();
-        Controller ct = new Controller();
-        //bookList = Controller.bookList(bookList);
         userList = Controller.userList(userList);
         testBookList = Controller.testBookList(testBookList);
         bookHistoryList = Controller.bookHistoryList(bookHistoryList);
@@ -189,7 +187,7 @@ public class Books
         List<BookVO> borrowList = new List<BookVO>();
         List<UserVO> userBorrow = new List<UserVO>();
         int count = 0;
-
+        int count2 = 0;
         ui.Get().printScreen1_1_1();
         while (check)
         {
@@ -261,6 +259,7 @@ public class Books
                                     userList[l].BorrowedBookList += searchList[j].BookName + " ";
                                     userList[l].BorrowedBookCount++;
                                     loginUser[0].BorrowedBookCount++;
+                                    count1++;
                                     for (int d = 0; d < testBookList.Count; d++)
                                     {
                                         if (testBookList[d].BookName == searchList[j].BookName)
@@ -295,19 +294,25 @@ public class Books
                                     controller.HistoryOfBorrow(searchList[j].BookName, loginUser[0].UserName, bookHistoryList);
                                     controller.UpdateBookHistoryList(bookHistoryList);
                                     check1 = false;
+                                    count1++;
 
                                 }
 
                                 else
                                 {
                                     Console.Write("\r\n        이미 대출하신 책입니다. 대출 목록을 확인해 보세요. ");
+                                    count2++;
                                 }
                             }
                     }
                     borrowList.Add(searchList[j]);
                 }
+                
             }
-
+            if (count1 == 0&& count2 !=0)
+            {
+                Console.Write("\r\n        잘못입력하셨습니다. 다시 입력해주세요 : ");
+            }
 
 
             //foreach (UserVO uv in loginUser)
@@ -355,7 +360,6 @@ public class Books
     {
         bool check = true;
         bool check1 = true;
-        bool check2 = true;
         Console.Clear();
         Controller ct = new Controller();
         testBookList = Controller.testBookList(testBookList);

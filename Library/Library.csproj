@@ -38,16 +38,13 @@
   <ItemGroup>
     <Compile Include="Controller\Books.cs" />
     <Compile Include="Controller\Controller.cs" />
-    <Compile Include="Controller\Login.cs" />
-    <Compile Include="Controller\Main.cs" />
     <Compile Include="Controller\MenuControl.cs" />
     <Compile Include="Controller\start.cs" />
-    <Compile Include="Controller\UserRegister.cs" />
-    <Compile Include="Controller\inputKey.cs" />
+    <Compile Include="Controller\User.cs" />
     <Compile Include="Model\BookHistoryVO.cs" />
     <Compile Include="Model\UserVO.cs" />
     <Compile Include="Model\BookVO.cs" />
-    <Compile Include="Controller\program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="View\ui.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -202,8 +202,6 @@ public class Controller
         serializer.Serialize(ws, bookHistoryList);     //직렬화(저장)
         ws.Close();
     }
-
-
     public void UpdataBookData(List<BookVO> bookList)
     {
         Stream ws = new FileStream("bookInfomation.dat", FileMode.Create);

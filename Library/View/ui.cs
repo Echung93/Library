@@ -28,9 +28,8 @@ public class ui
             Console.Clear();
             check1 = true;
 
-            Login lo = new Login();
+            User us = new User();
             List<BookVO> bookList = new List<BookVO>();
-            List<BookVO> searchList = new List<BookVO>();
             List<BookHistoryVO> bookHistories = new List<BookHistoryVO>();
             Console.WriteLine("       ------------------------------------------------------------------    ");
             Console.WriteLine("\r\n");
@@ -60,8 +59,7 @@ public class ui
                 {
                     case "1":
                         {
-
-                            loginUser = lo.loginUser(userList);
+                            loginUser = us.loginUser(userList);
                             if (loginUser.Count != 0)
                             {
                                 ui.Get().printScreen1(bookList);
@@ -86,7 +84,7 @@ public class ui
 
                     case "2":
                         {
-                            new Main();
+                            new User().UserRegister();
                             check1 = false;
                             break;
                         }
@@ -125,7 +123,6 @@ public class ui
             bool check1 = true;
             Books books = new Books();
             Controller ct = new Controller();
-            UserRegister ur = new UserRegister();
             testBookList = new List<BookVO>();
             List<BookVO> searchList = new List<BookVO>();
             List<BookVO> borrowList = new List<BookVO>();
@@ -524,7 +521,7 @@ public class ui
 
         else
         {
-            new Login().loginManager(input);
+            new User().loginManager(input);
         }
     }
 
@@ -537,7 +534,6 @@ public class ui
             bool check1 = true;
             Books books = new Books();
             Controller ct = new Controller();
-            UserRegister ur = new UserRegister();
             bookList = new List<BookVO>();
             List<BookVO> searchList = new List<BookVO>();
             List<BookVO> borrowList = new List<BookVO>();
