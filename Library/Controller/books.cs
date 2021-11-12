@@ -11,7 +11,7 @@ public class Books
     {
 
     }
-    public void searchBook(List<BookVO> bookList)
+    public void searchBook(List<BookVO> testBookList)
     {
         bool check = true;
 
@@ -24,11 +24,12 @@ public class Books
             string num = MenuControl.Get().ReadString();
             if (num == "\0")
             {
+                check = false;
                 break;
             }
             Console.Clear();
             Controller ct = new Controller();
-            bookList = Controller.bookList(bookList);
+            testBookList = Controller.testBookList(testBookList);
 
             int count = 0;
 
@@ -37,22 +38,25 @@ public class Books
                 ui.Get().printScreen1_1_1();
 
                 string input = MenuControl.Get().ReadString();
-
+                if (input == "\0")
+                {
+                    break;
+                }
                 while (check1)
                 {
                     Console.WriteLine("\r\n        검색 목록");
-                    for (int i = 0; i < bookList.Count; i++)
+                    for (int i = 0; i < testBookList.Count; i++)
                     {
-                        if (bookList[i].BookName.Contains(input))
+                        if (testBookList[i].BookName.Contains(input))
                         {
                             Console.WriteLine("       ------------------------------------------------------------------    ");
                             Console.WriteLine("\r\n");
-                            Console.WriteLine("        책  ID 넘버 : " + bookList[i].BookIDNumber);
-                            Console.WriteLine("        책  이름 : " + bookList[i].BookName);
-                            Console.WriteLine("        책  저자 : " + bookList[i].BookAuthor);
-                            Console.WriteLine("        책  출판사 : " + bookList[i].BookPublisher);
-                            Console.WriteLine("        책  가격 : " + bookList[i].BookPrice);
-                            Console.WriteLine("        책  수량 : " + bookList[i].BookQuantity);
+                            Console.WriteLine("        책  ID 넘버 : " + testBookList[i].BookIDNumber);
+                            Console.WriteLine("        책  이름 : " + testBookList[i].BookName);
+                            Console.WriteLine("        책  저자 : " + testBookList[i].BookAuthor);
+                            Console.WriteLine("        책  출판사 : " + testBookList[i].BookPublisher);
+                            Console.WriteLine("        책  가격 : " + testBookList[i].BookPrice);
+                            Console.WriteLine("        책  수량 : " + testBookList[i].BookQuantity);
                             Console.WriteLine("\r\n");
                             count++;
                         }
@@ -86,18 +90,18 @@ public class Books
                         break;
                     }
                     Console.WriteLine("\r\n        검색 목록");
-                    for (int i = 0; i < bookList.Count; i++)
+                    for (int i = 0; i < testBookList.Count; i++)
                     {
-                        if (bookList[i].BookAuthor.Contains(input))
+                        if (testBookList[i].BookAuthor.Contains(input))
                         {
                             Console.WriteLine("       ------------------------------------------------------------------    ");
                             Console.WriteLine("\r\n");
-                            Console.WriteLine("        책  ID 넘버 : " + bookList[i].BookIDNumber);
-                            Console.WriteLine("        책  이름 : " + bookList[i].BookName);
-                            Console.WriteLine("        책  저자 : " + bookList[i].BookAuthor);
-                            Console.WriteLine("        책  출판사 : " + bookList[i].BookPublisher);
-                            Console.WriteLine("        책  가격 : " + bookList[i].BookPrice);
-                            Console.WriteLine("        책  수량 : " + bookList[i].BookQuantity);
+                            Console.WriteLine("        책  ID 넘버 : " + testBookList[i].BookIDNumber);
+                            Console.WriteLine("        책  이름 : " + testBookList[i].BookName);
+                            Console.WriteLine("        책  저자 : " + testBookList[i].BookAuthor);
+                            Console.WriteLine("        책  출판사 : " + testBookList[i].BookPublisher);
+                            Console.WriteLine("        책  가격 : " + testBookList[i].BookPrice);
+                            Console.WriteLine("        책  수량 : " + testBookList[i].BookQuantity);
                             Console.WriteLine("\r\n");
                             count++;
                         }
@@ -131,18 +135,18 @@ public class Books
                         break;
                     }
                     Console.WriteLine("\r\n        검색 목록");
-                    for (int i = 0; i < bookList.Count; i++)
+                    for (int i = 0; i < testBookList.Count; i++)
                     {
-                        if (bookList[i].BookPublisher.Contains(input))
+                        if (testBookList[i].BookPublisher.Contains(input))
                         {
                             Console.WriteLine("       ------------------------------------------------------------------    ");
                             Console.WriteLine("\r\n");
-                            Console.WriteLine("        책  ID 넘버 : " + bookList[i].BookIDNumber);
-                            Console.WriteLine("        책  이름 : " + bookList[i].BookName);
-                            Console.WriteLine("        책  저자 : " + bookList[i].BookAuthor);
-                            Console.WriteLine("        책  출판사 : " + bookList[i].BookPublisher);
-                            Console.WriteLine("        책  가격 : " + bookList[i].BookPrice);
-                            Console.WriteLine("        책  수량 : " + bookList[i].BookQuantity);
+                            Console.WriteLine("        책  ID 넘버 : " + testBookList[i].BookIDNumber);
+                            Console.WriteLine("        책  이름 : " + testBookList[i].BookName);
+                            Console.WriteLine("        책  저자 : " + testBookList[i].BookAuthor);
+                            Console.WriteLine("        책  출판사 : " + testBookList[i].BookPublisher);
+                            Console.WriteLine("        책  가격 : " + testBookList[i].BookPrice);
+                            Console.WriteLine("        책  수량 : " + testBookList[i].BookQuantity);
                             Console.WriteLine("\r\n");
                             count++;
                         }
@@ -171,14 +175,15 @@ public class Books
             }
         }
     }
-    public List<BookVO> borrowBooks(List<BookVO> bookList, List<UserVO> loginUser, List<UserVO> userList, List<BookHistoryVO> bookHistoryList)
+    public List<BookVO> borrowBooks(List<BookVO> testBookList, List<UserVO> loginUser, List<UserVO> userList, List<BookHistoryVO> bookHistoryList)
     {
         bool check = true;
         bool check1 = true;
         Console.Clear();
         Controller ct = new Controller();
-        bookList = Controller.bookList(bookList);
+        //bookList = Controller.bookList(bookList);
         userList = Controller.userList(userList);
+        testBookList = Controller.testBookList(testBookList);
         bookHistoryList = Controller.bookHistoryList(bookHistoryList);
         List<BookVO> searchList = new List<BookVO>();
         List<BookVO> borrowList = new List<BookVO>();
@@ -195,21 +200,21 @@ public class Books
                 break;
             }
             Console.WriteLine("\r\n        검색 목록");
-            for (int i = 0; i < bookList.Count; i++)
+            for (int i = 0; i < testBookList.Count; i++)
             {
-                if (bookList[i].BookName.Contains(input))
+                if (testBookList[i].BookName.Contains(input))
                 {
                     Console.WriteLine("       ------------------------------------------------------------------    ");
                     Console.WriteLine("\r\n");
-                    Console.WriteLine("        책  ID 넘버 : " + bookList[i].BookIDNumber);
-                    Console.WriteLine("        책  이름 : " + bookList[i].BookName);
-                    Console.WriteLine("        책  저자 : " + bookList[i].BookAuthor);
-                    Console.WriteLine("        책  출판사 : " + bookList[i].BookPublisher);
-                    Console.WriteLine("        책  가격 : " + bookList[i].BookPrice);
-                    Console.WriteLine("        책  수량 : " + bookList[i].BookQuantity);
+                    Console.WriteLine("        책  ID 넘버 : " + testBookList[i].BookIDNumber);
+                    Console.WriteLine("        책  이름 : " + testBookList[i].BookName);
+                    Console.WriteLine("        책  저자 : " + testBookList[i].BookAuthor);
+                    Console.WriteLine("        책  출판사 : " + testBookList[i].BookPublisher);
+                    Console.WriteLine("        책  가격 : " + testBookList[i].BookPrice);
+                    Console.WriteLine("        책  수량 : " + testBookList[i].BookQuantity);
                     Console.WriteLine("\r\n");
                     count++;
-                    searchList.Add(bookList[i]);
+                    searchList.Add(testBookList[i]);
                 }
             }
             if (count == 0)
@@ -256,6 +261,13 @@ public class Books
                                     userList[l].BorrowedBookList += searchList[j].BookName + " ";
                                     userList[l].BorrowedBookCount++;
                                     loginUser[0].BorrowedBookCount++;
+                                    for (int d = 0; d < testBookList.Count; d++)
+                                    {
+                                        if (testBookList[d].BookName == searchList[j].BookName)
+                                        {
+                                            testBookList[d].BookQuantity--;
+                                        }
+                                    }
                                     Controller controller = new Controller();
                                     controller.UpdataUserData(userList);
                                     controller.HistoryOfBorrow(searchList[j].BookName, loginUser[0].UserName, bookHistoryList);
@@ -270,8 +282,13 @@ public class Books
                                     userList[l].BorrowedBookList += searchList[j].BookName + " ";
                                     userList[l].BorrowedBookCount++;
                                     loginUser[0].BorrowedBookCount++;
-                                    userList[l].BorrowedBookList += searchList[j].BookName + " ";
-                                    userList[l].BorrowedBookCount++;
+                                    for (int d = 0; d < testBookList.Count; d++)
+                                    {
+                                        if (testBookList[d].BookName == searchList[j].BookName)
+                                        {
+                                            testBookList[d].BookQuantity--;
+                                        }
+                                    }
                                     loginUser[0].BorrowedBookCount++;
                                     Controller controller = new Controller();
                                     controller.UpdataUserData(userList);
@@ -334,14 +351,14 @@ public class Books
         return borrowList;
     }
 
-    public void returnBook(List<BookVO> bookList, List<UserVO> loginUser, List<UserVO> userList, List<BookHistoryVO> bookHistoryList)
+    public void returnBook(List<BookVO> testBookList, List<UserVO> loginUser, List<UserVO> userList, List<BookHistoryVO> bookHistoryList)
     {
         bool check = true;
         bool check1 = true;
         bool check2 = true;
         Console.Clear();
         Controller ct = new Controller();
-        bookList = Controller.bookList(bookList);
+        testBookList = Controller.testBookList(testBookList);
         userList = Controller.userList(userList);
         bookHistoryList = Controller.bookHistoryList(bookHistoryList);
 
@@ -418,10 +435,16 @@ public class Books
                                 }
                                 userList[j].BorrowedBookList = userReturn;
                                 userList[j].BorrowedBookCount--;
+                                for (int d = 0; d< testBookList.Count; d++)
+                                {
+                                   if (testBookList[d].BookName == split[num])
+                                    {
+                                        testBookList[d].BookQuantity++;
+                                    }
+                                }                                
                                 Controller controller = new Controller();
                                 controller.UpdataUserData(userList);
-                                //HistoryOfReturn(bookList, loginUser, bookHistory);
-
+                                //HistoryOfReturn(bookList, loginUser, bookHistory);                                
                                 Console.Write($"\r\n        {split[num]}책이 반납되었습니다. ");
                                 controller.HistoryOfReturn(split[num], loginUser[0].UserName, bookHistoryList);
                                 controller.UpdateBookHistoryList(bookHistoryList);

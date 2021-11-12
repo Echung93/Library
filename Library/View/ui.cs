@@ -117,7 +117,7 @@ public class ui
             }
         }
     }
-    public void printScreen1(List<BookVO> bookList)
+    public void printScreen1(List<BookVO> testBookList)
     {
         bool check = true;
         while (check)
@@ -126,12 +126,12 @@ public class ui
             Books books = new Books();
             Controller ct = new Controller();
             UserRegister ur = new UserRegister();
-            bookList = new List<BookVO>();
+            testBookList = new List<BookVO>();
             List<BookVO> searchList = new List<BookVO>();
             List<BookVO> borrowList = new List<BookVO>();
             List<UserVO> userList = new List<UserVO>();
             List<BookHistoryVO> bookHistoryList = new List<BookHistoryVO>();
-            bookList = Controller.bookList(bookList);
+            testBookList = Controller.bookList(testBookList);
             userList = Controller.userList(userList);
             bookHistoryList = Controller.bookHistoryList(bookHistoryList);
 
@@ -177,7 +177,7 @@ public class ui
                 {
                     case "1":
                         {
-                            new Books().searchBook(bookList);
+                            new Books().searchBook(testBookList);
                             check1 = false;
                             break;
                         }
@@ -185,7 +185,7 @@ public class ui
                     case "2":
                         {
                             check1 = false;
-                            borrowList = books.borrowBooks(bookList, loginUser, userList, bookHistoryList);
+                            borrowList = books.borrowBooks(testBookList, loginUser, userList, bookHistoryList);
                             //for (int i = 0; i < loginUser.Count; i++)
                             //{
                             //    for (int j = 0; j < userList.Count; j++)
@@ -221,7 +221,7 @@ public class ui
 
                     case "3":
                         {
-                            new Books().returnBook(bookList, loginUser, userList, bookHistoryList);
+                            new Books().returnBook(testBookList, loginUser, userList, bookHistoryList);
                             check1 = false;
                             break;
                         }
@@ -229,17 +229,17 @@ public class ui
                     case "4":
                         {
                             Console.Clear();
-                            Controller.bookList(bookList);
-                            for (int i = 0; i < bookList.Count; i++)
+                            Controller.bookList(testBookList);
+                            for (int i = 0; i < testBookList.Count; i++)
                             {
                                 Console.WriteLine("       ------------------------------------------------------------------    ");
                                 Console.WriteLine("\r\n");
-                                Console.WriteLine("        책  ID 넘버 : " + bookList[i].BookIDNumber);
-                                Console.WriteLine("        책  이름 : " + bookList[i].BookName);
-                                Console.WriteLine("        책  저자 : " + bookList[i].BookAuthor);
-                                Console.WriteLine("        책  출판사 : " + bookList[i].BookPublisher);
-                                Console.WriteLine("        책  가격 : " + bookList[i].BookPrice);
-                                Console.WriteLine("        책  수량 : " + bookList[i].BookQuantity);
+                                Console.WriteLine("        책  ID 넘버 : " + testBookList[i].BookIDNumber);
+                                Console.WriteLine("        책  이름 : " + testBookList[i].BookName);
+                                Console.WriteLine("        책  저자 : " + testBookList[i].BookAuthor);
+                                Console.WriteLine("        책  출판사 : " + testBookList[i].BookPublisher);
+                                Console.WriteLine("        책  가격 : " + testBookList[i].BookPrice);
+                                Console.WriteLine("        책  수량 : " + testBookList[i].BookQuantity);
                             }
 
                             Console.WriteLine("\r\n        뒤로가기를 원하시면 ESC를 눌러주세요.");
@@ -770,11 +770,13 @@ public class ui
                             ui.Get().printScreenEtc();
                             int count = 0;
                             Console.Write("\r\n        수량을 수정하고자 하는 책의 이름(띄어쓰기 상관 없이 입력) : ");
+                            input = MenuControl.Get().ReadString();
                             while (check3)
                             {
-                                input = MenuControl.Get().ReadString();
+                               
                                 for (int i = 0; i < bookList.Count; i++)
                                 {
+                                    count++;
                                     if (bookList[i].BookName == input)
                                     {
                                         Console.Write($"\r\n        책 {bookList[i].BookName} 수정된 수량 입력 : ");
@@ -794,8 +796,15 @@ public class ui
                                             check = true;
                                             break;
                                         }
-                                        
                                     }
+
+                                    else if (count == 7)
+                                    {
+                                        Console.Write($"\r\n        정확한 책의 이름(띄어쓰기 상관 없이 입력) 입력해주세요 : ");
+                                        input = MenuControl.Get().ReadString();
+                                        count = 0;
+                                    }
+                                    
                                 }
                                 if (input == "\0")
                                 {
