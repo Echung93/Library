@@ -77,8 +77,12 @@ public class Login
             }
             for (int i = 0; i < userList.Count; i++)
             {
+<<<<<<< HEAD
                 //int index = userList[i].UserId.IndexOf(id);                
 
+=======
+                //int index = userList[i].UserId.IndexOf(id);
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                 if (userList[i].UserId == (id))
                 {
                     Console.Write("\r\n        회원 비밀 번호를 입력하세요(English and Number) : ");

@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+<<<<<<< HEAD
 [Serializable]
+=======
+
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
 public class BookHistoryVO
 {
     private string userName;

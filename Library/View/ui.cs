@@ -62,12 +62,28 @@ public class ui
                         {
 
                             loginUser = lo.loginUser(userList);
+<<<<<<< HEAD
                             if (loginUser.Count != 0)
                             {
                                 ui.Get().printScreen1(bookList);
                                 check1 = false;
                                 break;
                             }
+=======
+                            //foreach (UserVO uv in loginUser)
+                            //{
+                            //    Console.WriteLine("       ------------------------------------------------------------------    ");
+                            //    Console.WriteLine("\r\n");
+                            //    Console.WriteLine("        회원 ID : " + uv.UserId);
+                            //    Console.WriteLine("        회원 비밀 번호 : " + uv.UserPassword);
+                            //    Console.WriteLine("        회원 이름 입력 : " + uv.UserName);
+                            //    Console.WriteLine($"        {uv.UserName} 나이 : " + uv.UserAge);
+                            //    Console.WriteLine($"        {uv.UserName} 핸드폰 번호 : " + uv.UserPhoneNumber);
+                            //    Console.WriteLine($"        {uv.UserName} 회원 주소 : " + uv.UserAddress);
+                            //    Console.WriteLine("\r\n");
+                            //}
+                            ui.Get().printScreen1(bookList);
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                             check1 = false;
                             break;
                         }
@@ -82,7 +98,11 @@ public class ui
                     case "3":
                         {
                             ui.Get().managerPage();
+<<<<<<< HEAD
                             ui.Get().printScreen2(bookList, userList, bookHistories);
+=======
+                            ui.Get().printScreen2(bookList, userList);
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                             check1 = false;
                             break;
                         }
@@ -503,10 +523,17 @@ public class ui
         Console.WriteLine("\r\n");
         Console.WriteLine("\r\n");
         Console.Write("         관리자 비밀 번호를 입력 하시오 : ");
+<<<<<<< HEAD
         string input = MenuControl.Get().ReadPassword();
 
         if (input == "\0")
         {
+=======
+        string input = MenuControl.Get().ReadPassword();       
+        
+        if (input == "\0")
+        {            
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
         }
         else
         {
@@ -514,7 +541,11 @@ public class ui
         }
 
     }
+<<<<<<< HEAD
     public void printScreen2(List<BookVO> bookList, List<UserVO> userList, List<BookHistoryVO> bookHistories)
+=======
+    public void printScreen2(List<BookVO> bookList, List<UserVO> userList)
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
     {
         Console.Clear();
         bool check = true;
@@ -529,7 +560,10 @@ public class ui
             List<BookVO> borrowList = new List<BookVO>();
             bookList = Controller.bookList(bookList);
             userList = Controller.userList(userList);
+<<<<<<< HEAD
             bookHistories = Controller.bookHistoryList(bookHistories);
+=======
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
 
             Console.WriteLine("       ------------------------------------------------------------------    ");
             Console.WriteLine("\r\n");
@@ -580,7 +614,11 @@ public class ui
                     case "1":
                         {
                             Console.Clear();
+<<<<<<< HEAD
                             foreach (UserVO uv in userList)
+=======
+                            foreach(UserVO uv in userList)
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                             {
                                 Console.WriteLine("       ------------------------------------------------------------------    ");
                                 Console.WriteLine("\r\n");
@@ -595,14 +633,22 @@ public class ui
                             Console.WriteLine($"                등록된 총 회원 수는 : {userList.Count} 명 입니다");
                             Console.WriteLine("\r\n        뒤로가기를 원하시면 ESC를 눌러주세요.");
                             string num = MenuControl.Get().ReadESC();
+<<<<<<< HEAD
 
+=======
+                                                        
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                             if (num == "\0")
                             {
                                 check1 = false;
                                 check = true;
                             }
                             break;
+<<<<<<< HEAD
 
+=======
+                            
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                         }
 
                     case "2":
@@ -634,6 +680,49 @@ public class ui
 
                     case "3":
                         {
+<<<<<<< HEAD
+=======
+                            bool check3 = true; 
+                            
+                            Console.Clear();
+                            ui.Get().printScreenEtc();
+                            int count = 0;
+                            Console.Write("\r\n        검색하려는 회원의 이름이 무엇인가요?? : ");
+                            while (check3)
+                            {
+                                input = MenuControl.Get().ReadString();
+                            for (int i = 0; i < userList.Count; i++)
+                            {                                
+                                if (userList[i].UserName == input)
+                                {
+                                    Console.WriteLine("\r\n        회원 이름 : " + userList[i].UserName);
+                                    Console.WriteLine("        회원 나이 : " + userList[i].UserAge);
+                                    Console.WriteLine("        회원 휴대폰 번호 : " + userList[i].UserPhoneNumber);
+                                    Console.WriteLine("        회원 주소 : " + userList[i].UserAddress);
+                                    count++;
+                                    check3 = false;
+                                }
+                            }
+
+                            if (input == "\0")
+                            {
+                                check1 = false;
+                                check = true;
+                                check3 = false;
+                            }
+
+                            if (count ==0)
+                            {
+                                Console.Write("\r\n        검색하시려는 회원의 이름을 정확히 입력하세요: ");
+                            }
+                            }
+                            break;
+                        }
+                     
+
+                    case "4":
+                        {
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                             bool check3 = true;
 
                             Console.Clear();
@@ -671,20 +760,29 @@ public class ui
                             break;
                         }
 
+<<<<<<< HEAD
 
                     case "4":
+=======
+                    case "5":
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                         {
                             bool check3 = true;
 
                             Console.Clear();
                             ui.Get().printScreenEtc();
                             int count = 0;
+<<<<<<< HEAD
                             Console.Write("\r\n        삭제하시려는 회원의 이름이 무엇인가요? : ");
+=======
+                            Console.Write("\r\n        검색하려는 회원의 이름이 무엇인가요?? : ");
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                             while (check3)
                             {
                                 input = MenuControl.Get().ReadString();
                                 for (int i = 0; i < userList.Count; i++)
                                 {
+<<<<<<< HEAD
                                     if (userList[i].UserName == input && userList[i].BorrowedBookCount == 0)
                                     {
                                         userList.RemoveAt(i);
@@ -698,6 +796,17 @@ public class ui
                                     {
                                         Console.Write("\r\n        해당 회원은 대출중인 책이 있어 삭제하지 못합니다. ");
                                     }
+=======
+                                    if (userList[i].UserName == input)
+                                    {
+                                        Console.WriteLine("\r\n        회원 이름 : " + userList[i].UserName);
+                                        Console.WriteLine("        회원 나이 : " + userList[i].UserAge);
+                                        Console.WriteLine("        회원 휴대폰 번호 : " + userList[i].UserPhoneNumber);
+                                        Console.WriteLine("        회원 주소 : " + userList[i].UserAddress);
+                                        count++;
+                                        check3 = false;
+                                    }
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                                 }
 
                                 if (input == "\0")
@@ -709,19 +818,28 @@ public class ui
 
                                 if (count == 0)
                                 {
+<<<<<<< HEAD
                                     Console.Write("\r\n        삭제하시려는 회원의 이름을 정확히 입력하세요: ");
+=======
+                                    Console.Write("\r\n        검색하시려는 회원의 이름을 정확히 입력하세요: ");
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                                 }
                             }
                             break;
                         }
 
+<<<<<<< HEAD
                     case "5":
+=======
+                    case "6":
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                         {
                             bool check3 = true;
 
                             Console.Clear();
                             ui.Get().printScreenEtc();
                             int count = 0;
+<<<<<<< HEAD
                             Console.Write("\r\n        수량을 수정하고자 하는 책의 이름(띄어쓰기 상관 없이 입력) : ");
                             while (check3)
                             {
@@ -745,6 +863,22 @@ public class ui
                                             check3 = false;
                                             check = true;
                                         }
+=======
+                            Console.Write("\r\n        검색하려는 회원의 이름이 무엇인가요?? : ");
+                            while (check3)
+                            {
+                                input = MenuControl.Get().ReadString();
+                                for (int i = 0; i < userList.Count; i++)
+                                {
+                                    if (userList[i].UserName == input)
+                                    {
+                                        Console.WriteLine("\r\n        회원 이름 : " + userList[i].UserName);
+                                        Console.WriteLine("        회원 나이 : " + userList[i].UserAge);
+                                        Console.WriteLine("        회원 휴대폰 번호 : " + userList[i].UserPhoneNumber);
+                                        Console.WriteLine("        회원 주소 : " + userList[i].UserAddress);
+                                        count++;
+                                        check3 = false;
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                                     }
                                 }
 
@@ -757,12 +891,17 @@ public class ui
 
                                 if (count == 0)
                                 {
+<<<<<<< HEAD
                                     Console.Write("\r\n        수정하시려는 책의 이름을 정확히 입력하세요: ");
+=======
+                                    Console.Write("\r\n        검색하시려는 회원의 이름을 정확히 입력하세요: ");
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                                 }
                             }
                             break;
                         }
 
+<<<<<<< HEAD
                     case "6":
                         {
                             bool check3 = true;
@@ -826,6 +965,8 @@ public class ui
                         }
                         break;
 
+=======
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                     case "7":
                         {
                             bool check3 = true;
@@ -833,6 +974,7 @@ public class ui
                             Console.Clear();
                             ui.Get().printScreenEtc();
                             int count = 0;
+<<<<<<< HEAD
                             Console.Write("\r\n        삭제하시려는 책의 이름이 무엇인가요? : ");
                             while (check3)
                             {
@@ -845,6 +987,21 @@ public class ui
                                         count++;
                                         Console.Write("\r\n        삭제 완료 ");
                                         ct.UpdataBookData(bookList);
+=======
+                            Console.Write("\r\n        검색하려는 회원의 이름이 무엇인가요?? : ");
+                            while (check3)
+                            {
+                                input = MenuControl.Get().ReadString();
+                                for (int i = 0; i < userList.Count; i++)
+                                {
+                                    if (userList[i].UserName == input)
+                                    {
+                                        Console.WriteLine("\r\n        회원 이름 : " + userList[i].UserName);
+                                        Console.WriteLine("        회원 나이 : " + userList[i].UserAge);
+                                        Console.WriteLine("        회원 휴대폰 번호 : " + userList[i].UserPhoneNumber);
+                                        Console.WriteLine("        회원 주소 : " + userList[i].UserAddress);
+                                        count++;
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                                         check3 = false;
                                     }
                                 }
@@ -858,7 +1015,11 @@ public class ui
 
                                 if (count == 0)
                                 {
+<<<<<<< HEAD
                                     Console.Write("\r\n        삭제하시려는 책의 이름을 정확히 입력하세요: ");
+=======
+                                    Console.Write("\r\n        검색하시려는 회원의 이름을 정확히 입력하세요: ");
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                                 }
                             }
                             break;
@@ -866,6 +1027,7 @@ public class ui
 
                     case "8":
                         {
+<<<<<<< HEAD
 
                             Console.Clear();
                             ui.Get().printScreenEtc();
@@ -903,6 +1065,11 @@ public class ui
                             }
                             break;
 
+=======
+                            check = false;
+                            check1 = false;
+                            break;
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
                         }
 
                     case "9":
@@ -924,4 +1091,8 @@ public class ui
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+    }
+>>>>>>> fbd2e2ded954da6849271e616b6d7d6974a07e22
