@@ -252,8 +252,9 @@ public class Books
                                     //Console.WriteLine("        책  수량 : " + bookList[j].BookQuantity);
                                     Console.WriteLine("\r\n");
                                     Console.Write($"        책 '{searchList[j].BookName}' 대출 완료 ! ");
-                                    userList[l].BorrowedBookList += userList[l].BorrowedBookCount + searchList[j].BookName;
+                                    userList[l].BorrowedBookList += searchList[j].BookName + " ";
                                     userList[l].BorrowedBookCount++;
+                                    loginUser[0].BorrowedBookCount++;
                                     Controller controller = new Controller();
                                     controller.UpdataUserData(userList);
                                     check1 = false;
@@ -263,8 +264,9 @@ public class Books
                                 {
                                     Console.WriteLine("\r\n");
                                     Console.Write($"        책 '{searchList[j].BookName}' 대출 완료 ! ");
-                                    userList[l].BorrowedBookList += userList[l].BorrowedBookCount + searchList[j].BookName;
+                                    userList[l].BorrowedBookList += searchList[j].BookName + " ";
                                     userList[l].BorrowedBookCount++;
+                                    loginUser[0].BorrowedBookCount++;
                                     Controller controller = new Controller();
                                     controller.UpdataUserData(userList);
                                     check1 = false;
@@ -328,47 +330,111 @@ public class Books
     {
         bool check = true;
         bool check1 = true;
+        bool check2 = true;
         Console.Clear();
         Controller ct = new Controller();
         bookList = Controller.bookList(bookList);
         userList = Controller.userList(userList);
+        //List<BookHistoryVO> bookHistoryList;
         List<BookVO> searchList = new List<BookVO>();
         List<BookVO> borrowList = new List<BookVO>();
         List<UserVO> userBorrow = new List<UserVO>();
-        
+
+
         int count = 0;
         ui.Get().printScreenEtc();
-        for (int i = 0; i < loginUser.Count; i++)
-        {
-            for (int j = 0; j < userList.Count; j++)
+        while (check1)
+            if (loginUser[0].BorrowedBookCount == 0)
             {
-                if (userList[j].UserId == loginUser[i].UserId)
+                Console.WriteLine("\r\n");
+                Console.WriteLine("        {0}님의 대출 책 목록                                                 ", loginUser[0].UserName);
+                Console.WriteLine("\r\n");
+                Console.WriteLine("\r\n");
+                Console.WriteLine("        반납할 책이 없습니다 ");
+                check1 = false;
+                Console.WriteLine("        뒤로가려면 ESC를 눌러주세요. ");
+                string input1 = MenuControl.Get().ReadESC();
+                if (input1 == "\0")
                 {
-                    userBorrow.Add(userList[j]);
+                    check1 = false;
+                    break;
                 }
-            }
-        }
 
-        Console.WriteLine("\r\n");
-        Console.WriteLine("        {0}님의 대출 책 목록                                                 ",loginUser[0].UserName);
-        Console.WriteLine("\r\n");
-        Console.WriteLine("        {0}                                            ", userBorrow[0].BorrowedBookList);
-        Console.WriteLine("\r\n");
-        Console.Write("        반납할 책의 숫자를 입력해주세요 : ");
-        while (check)
-        {
-            string input = MenuControl.Get().ReadNumber();
-            for (int i = 0; i < loginUser.Count; i++)
+            }
+
+            else
             {
-                for (int j = 0; j < userList.Count; j++)
+                for (int i = 0; i < loginUser.Count; i++)
                 {
-                    if (userList[j].UserId == loginUser[i].UserId)
+                    for (int j = 0; j < userList.Count; j++)
                     {
+                        if (userList[j].UserId == loginUser[i].UserId)
+                        {
+                            userBorrow.Add(userList[j]);
+                        }
                     }
                 }
+                string[] split = userBorrow[0].BorrowedBookList.Split(' ');
+                Console.WriteLine("\r\n");
+                Console.WriteLine("        {0}님의 대출 책 목록                                                 ", loginUser[0].UserName);
+                Console.WriteLine("\r\n");
+                for (int n = 0; n < split.Length-1; n++)
+                {
+                    Console.WriteLine($"        {count} {split[n]}                                            ");
+                    count++;
+                }
+                Console.WriteLine("\r\n");
+                Console.Write("        반납할 책의 숫자를 입력해주세요 : ");
+                while (check)
+                {
+                    string input = MenuControl.Get().ReadNumber();
+                    int num = int.Parse(input);
+                    string userReturn = null;
+                    for (int i = 0; i < loginUser.Count; i++)
+                    {
+                        for (int j = 0; j < userList.Count; j++)
+                        {
+                            if (userList[j].UserId == loginUser[i].UserId)
+                            {
+                                for (int k = 0; k < split.Length; k++)
+                                {
+                                    if (k != num)
+                                    {
+                                        userReturn += split[k];
+                                    }
+                                }
+                                userList[j].BorrowedBookList = userReturn;
+                                userList[j].BorrowedBookCount--;
+                                Controller controller = new Controller();
+                                controller.UpdataUserData(userList);
+                                //HistoryOfReturn(bookList, loginUser, bookHistory);
+                                Console.Write($"\r\n        {split[num]}책이 반납되었습니다. ");
+                                string input1 = MenuControl.Get().ReadESC();
+                                if (input1 == "\0")
+                                {
+                                    check = false;
+                                    check1 = false;
+                                    break;
+                                }
+                                
+                            }
+                        }
+                    }
+
+                }
             }
-
-        }
-
-        }
     }
+    //public void HistoryOfBorrow(BookVO bookList, List<UserVO> loginUser, List<BookHistoryVO> bookHistoryList)
+    //{
+    //    BookHistoryVO bookHistoryVO = new BookHistoryVO(loginUser[0].UserName, bookList.BookName);
+    //    bookHistoryVO.BorrowTime = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+    //    bookHistoryList.Add(bookHistoryVO);
+    //}
+
+    //public void HistoryOfReturn(BookVO bookList, List<UserVO> loginUser, List<BookHistoryVO> bookHistoryList)
+    //{
+    //    BookHistoryVO bookHistoryVO = new BookHistoryVO(loginUser[0].UserName, bookList.BookName);
+    //    bookHistoryVO.ReturnTime = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+    //    bookHistoryList.Add(bookHistoryVO);
+    //}
+}
