@@ -222,6 +222,7 @@ public class ui
                     case "3":
                         {
                             new Books().returnBook(bookList, loginUser, userList, bookHistoryList);
+                            check1 = false;
                             break;
                         }
 

@@ -395,6 +395,12 @@ public class Books
                 while (check)
                 {
                     string input = MenuControl.Get().ReadNumber();
+                    if (input == "\0")
+                    {
+                        check = false;
+                        check1 = false;
+                        break;
+                    }
                     int num = int.Parse(input);
                     string userReturn = null;
                     for (int i = 0; i < loginUser.Count; i++)
@@ -430,8 +436,7 @@ public class Books
                             }
                         }
                     }
-
-
+                    break;
                 }
             }
     }
